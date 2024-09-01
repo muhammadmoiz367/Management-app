@@ -106,7 +106,7 @@ const mutation = new GraphQLObjectType({
           });
         });
 
-        return Client.findByIdAndRemove(args.id);
+        return Client.findByIdAndDelete(args.id);
       },
     },
     // Add a project
