@@ -99,10 +99,10 @@ const mutation = new GraphQLObjectType({
       args: {
         id: { type: GraphQLNonNull(GraphQLID) },
       },
-      resolve(parent, args) {
-        Project.find({ clientId: args.id }).then((projects) => {
-          projects.forEach((project) => {
-            project.deleteOne();
+      async resolve(parent, args) {
+        await Project.find({ clientId: args.id }).then((projects) => {
+          projects.forEach(async (project) => {
+            await project.deleteOne();
           });
         });
 
